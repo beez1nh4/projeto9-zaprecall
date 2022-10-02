@@ -2,31 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function Buttons(props) {
-    const {deck,  openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember} = props
+    const {deck,  openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, recall, setRecall} = props
+    const colors = ["#FF3030", "#FF922E", "#2FBE34"]
     function increaseNot(){
-        let newNotRemember = [...notRemember, 1]
-        setNotRemember(newNotRemember)
+        let newRecall = [...recall, "notRemembered"]
+        setRecall(newRecall)
         if (alreadyAnswered.length !== openAnswers.length)
         {setAlreadyAnswered([...alreadyAnswered, 1])}
     }
     function increaseAlmost(){
-        let newAlmost = [...almost, 1]
-        setAlmost(newAlmost)
+        let newRecall = [...recall, "almost"]
+        setRecall(newRecall)
         if (alreadyAnswered.length !== openAnswers.length)
         {setAlreadyAnswered([...alreadyAnswered, 1])}
     }
     function increaseRemember(){
-        let newRemember = [...remember, 1]
-        setRemember(newRemember)
+        let newRecall = [...recall, "remember"]
+        setRecall(newRecall)
         if (alreadyAnswered.length !== openAnswers.length)
         {setAlreadyAnswered([...alreadyAnswered, 1])}
     }
     return (
         <>
             <ContainerBotoes>
-                <button onClick={increaseNot}>Não lembrei</button>
-                <button onClick={increaseAlmost}>Quase não lembrei</button>
-                <button onClick={increaseRemember}>Zap!</button>
+                <Button color={colors[0]} onClick={increaseNot}>Não lembrei</Button>
+                <Button color={colors[1]} onClick={increaseAlmost}>Quase não lembrei</Button>
+                <Button color={colors[2]} onClick={increaseRemember}>Zap!</Button>
             </ContainerBotoes>
         </>
     )
@@ -37,9 +38,9 @@ const ContainerBotoes = styled.div`
     display: flex;
     width: 300px;
     justify-content: space-between;
-    margin: 20px;
-    
-    & button{
+    margin: 20px;`
+
+const Button = styled.button`
     width: 90px;
     font-family: 'Recursive';
     font-style: normal;
@@ -51,11 +52,11 @@ const ContainerBotoes = styled.div`
     justify-content: center;
     text-align: center;
     color: #FFFFFF;
-    background: blue;
+    background: ${(props) => props.color};
     border-radius: 5px;
-    border: 1px solid blue;
+    border: 1px solid ${(props) => props.color};
     padding:5px;
-    }`
+    `
 
 /* Você vai precisar trocar a cor dos botões e alguns textos!
   VERDE = "#2FBE34"

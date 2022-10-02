@@ -5,7 +5,7 @@ import seta_virar from '../assets/img/seta_virar.png'
 import { useState } from "react"
 
 export default function Cards(props) {
-    const {deck, openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember} = props
+    const {deck, openAnswers, setOpenAnswers, alreadyAnswered, recall, setRecall} = props
     console.log(deck)
     
     const [openCards, setOpenCards] = useState([])

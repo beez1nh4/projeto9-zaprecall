@@ -5,11 +5,11 @@ import deckreact from './deck/deckreact';
 
 
 export default function Footer(props) {
-    const {deck, openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember} = props
+    const {deck, openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, recall, setRecall} = props
     return(
         <>
             <FooterConcluidos>
-                <Buttons deck={deckreact} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} remember={remember} setRemember={setRemember} almost={almost} setAlmost={setAlmost} notRemember={notRemember} setNotRemember={setNotRemember}></Buttons>
+                <Buttons deck={deckreact} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} recall={recall} setRecall={setRecall}></Buttons>
                 <p>{alreadyAnswered.length}/{deck.length} CONCLUÍDOS</p>
             </FooterConcluidos>
         </>
