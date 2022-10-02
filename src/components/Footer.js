@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import Buttons from './Buttons';
+import deckreact from './deck/deckreact';
 
-export default function Footer() {
+
+export default function Footer(props) {
+    const {deck, openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember} = props
     return(
         <>
             <FooterConcluidos>
-                <Buttons></Buttons>
-                <p>0/0 CONCLUÍDOS</p>
+                <Buttons deck={deckreact} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} remember={remember} setRemember={setRemember} almost={almost} setAlmost={setAlmost} notRemember={notRemember} setNotRemember={setNotRemember}></Buttons>
+                <p>{alreadyAnswered.length}/{deck.length} CONCLUÍDOS</p>
             </FooterConcluidos>
         </>
     )

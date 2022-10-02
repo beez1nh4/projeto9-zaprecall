@@ -1,13 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Buttons() {
+export default function Buttons(props) {
+    const {deck,  openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember} = props
+    function increaseNot(){
+        let newNotRemember = [...notRemember, 1]
+        setNotRemember(newNotRemember)
+        if (alreadyAnswered.length !== openAnswers.length)
+        {setAlreadyAnswered([...alreadyAnswered, 1])}
+    }
+    function increaseAlmost(){
+        let newAlmost = [...almost, 1]
+        setAlmost(newAlmost)
+        if (alreadyAnswered.length !== openAnswers.length)
+        {setAlreadyAnswered([...alreadyAnswered, 1])}
+    }
+    function increaseRemember(){
+        let newRemember = [...remember, 1]
+        setRemember(newRemember)
+        if (alreadyAnswered.length !== openAnswers.length)
+        {setAlreadyAnswered([...alreadyAnswered, 1])}
+    }
     return (
         <>
             <ContainerBotoes>
-                <button>Não lembrei</button>
-                <button>Quase não lembrei</button>
-                <button>Zap!</button>
+                <button onClick={increaseNot}>Não lembrei</button>
+                <button onClick={increaseAlmost}>Quase não lembrei</button>
+                <button onClick={increaseRemember}>Zap!</button>
             </ContainerBotoes>
         </>
     )
