@@ -1,4 +1,5 @@
 import React from 'react';
+import GlobalStyle from './globalStyles';
 import styled from 'styled-components';
 import Title from './Title';
 import Footer from './Footer';
@@ -14,6 +15,7 @@ export default function App() {
     const [openAnswers, setOpenAnswers] = useState([])
     return (
         <>
+        <GlobalStyle/>
         <ScreenContainer>
             <Title></Title>
             <Cards deck={deckreact} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} remember={remember} setRemember={setRemember} almost={almost} setAlmost={setAlmost} notRemember={notRemember} setNotRemember={setNotRemember}></Cards>
