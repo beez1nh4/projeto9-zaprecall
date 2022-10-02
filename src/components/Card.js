@@ -2,18 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import seta_play from '../assets/img/seta_play.png'
 import seta_virar from '../assets/img/seta_virar.png'
+import deckreact from './deck/deckreact';
 
 export default function Card() {
     return(
         <>
-            <PerguntaFechada>
-                <p>Pergunta 1</p>
-                <img src={seta_play}/>
+            {deckreact.map((deck) => true ? <PerguntaFechada>
+                <p>Pergunta {deck.id}</p>
+                <img alt="" src={seta_play}/>
             </PerguntaFechada>
-            <PerguntaAberta>
-                <p>O que é JSX?</p>
-                <img src={seta_virar}/>
-            </PerguntaAberta>
+            :
+            <PerguntaAberta key={deck.id}>
+                <p>{deck.question}</p>
+                <img alt="" src={seta_virar}/>
+            </PerguntaAberta>)}
+                
         </>
     )
 }
