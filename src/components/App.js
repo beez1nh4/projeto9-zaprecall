@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import Title from './Title';
+import Footer from './Footer';
+import Cards from './Cards';
 
 export default function App() {
     return (
         <>
         <ScreenContainer>
             <Title></Title>
+            <Cards></Cards>
+            <Footer></Footer>
         </ScreenContainer>
         </>
     )

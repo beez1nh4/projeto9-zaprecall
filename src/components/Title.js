@@ -6,7 +6,7 @@ export default function Title() {
     return (
         <>
             <LogoContainer>
-                <img src={logo}/>
+                <img alt=""src={logo}/>
                 <h1>ZapRecall</h1>
             </LogoContainer>
         </>
@@ -15,7 +15,8 @@ export default function Title() {
 }
 
 const LogoContainer = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');    display: flex;
+    @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700;800;900;1000&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');    align-items: center;
+    display: flex;
     align-items: center;
     margin: 40px 0 20px 0;
    
