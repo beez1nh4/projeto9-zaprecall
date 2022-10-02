@@ -3,19 +3,32 @@ import styled from 'styled-components';
 import seta_play from '../assets/img/seta_play.png'
 import seta_virar from '../assets/img/seta_virar.png'
 import deckreact from './deck/deckreact';
+import { useState } from "react"
 
 export default function Card() {
+    const [openCards, setOpenCards] = useState([])
+    const [openAnswers, setOpenAnswers] = useState([])
+    function openCard(i){
+        console.log(i)
+        setOpenCards([...openCards, i])
+        console.log([...openCards, i])
+    }
+    function showAnswer(i){
+        setOpenAnswers([...openAnswers,i])
+    }
     return(
         <>
-            {deckreact.map((deck) => true ? <PerguntaFechada>
+            {deckreact.map((deck,i) => (!openCards.includes(deck.id-1)) ? <PerguntaFechada key={deck.id} onClick={()=>openCard(i)}>
                 <p>Pergunta {deck.id}</p>
                 <img alt="" src={seta_play}/>
             </PerguntaFechada>
             :
-            <PerguntaAberta key={deck.id}>
+            (!openAnswers.includes(deck.id-1) ? <PerguntaAberta key={deck.id} >
                 <p>{deck.question}</p>
-                <img alt="" src={seta_virar}/>
-            </PerguntaAberta>)}
+                <img alt="" src={seta_virar} onClick={()=>showAnswer(i)}/>
+            </PerguntaAberta> : <PerguntaAberta key={deck.id}>
+                <p>{deck.answer}</p>
+            </PerguntaAberta>))}
                 
         </>
     )
