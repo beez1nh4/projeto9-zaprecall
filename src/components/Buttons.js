@@ -58,9 +58,9 @@ export default function Buttons(props) {
     return (
         <>
             <ContainerBotoes>
-                <Button color={colors[0]} onClick={increaseNot}>Não lembrei</Button>
-                <Button color={colors[1]} onClick={increaseAlmost}>Quase não lembrei</Button>
-                <Button color={colors[2]} onClick={increaseRemember}>Zap!</Button>
+                <Button data-identifier="forgot-btn" color={colors[0]} onClick={increaseNot}>Não lembrei</Button>
+                <Button data-identifier="almost-forgot-btn" color={colors[1]} onClick={increaseAlmost}>Quase não lembrei</Button>
+                <Button data-identifier="zap-btn" color={colors[2]} onClick={increaseRemember}>Zap!</Button>
             </ContainerBotoes>
         </>
     )

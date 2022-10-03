@@ -10,7 +10,7 @@ export default function Footer(props) {
         <>
             <FooterConcluidos>
                 <Buttons deck={deckreact} icons={icons} newIcons={newIcons} setIcons={setIcons} openCards={openCards} setOpenCards={setOpenCards} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} remember={remember} setRemember={setRemember} almost={almost} setAlmost={setAlmost} notRemember={notRemember} setNotRemember={setNotRemember}></Buttons>
-                <p>{alreadyAnswered.length}/{deck.length} CONCLUÍDOS</p>
+                <p data-identifier="flashcard-counter">{alreadyAnswered.length}/{deck.length} CONCLUÍDOS</p>
                 <Icones>{icons.map((i) => <img alt=""src={i}/>)}</Icones>         
             </FooterConcluidos>
         </>

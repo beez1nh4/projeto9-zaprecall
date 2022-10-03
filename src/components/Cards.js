@@ -32,16 +32,16 @@ export default function Cards(props) {
     }
     return (
         <>
-            {deck.map((deck, i) => (!openCards.includes(deck.id - 1)) ? <PerguntaFechada key={deck.id} onClick={() => openCard(i)}  line={alreadyAnswered.includes(deck.id - 1) && "line-through"} color={() => defineColor(deck.id - 1)}>
-                <p>Pergunta {deck.id}</p>
-                <img alt=""  src={icons[i]} />
+            {deck.map((deck, i) => (!openCards.includes(deck.id - 1)) ? <PerguntaFechada data-identifier="flashcard" key={deck.id}   line={alreadyAnswered.includes(deck.id - 1) && "line-through"} color={() => defineColor(deck.id - 1)}>
+                <p data-identifier="flashcard-index-item" >Pergunta {deck.id}</p>
+                <img alt=""  onClick={() => openCard(i)} src={icons[i]} data-identifier="flashcard-show-btn"/>
             </PerguntaFechada>
                 :
-                (!openAnswers.includes(deck.id - 1) ? <PerguntaAberta key={deck.id} >
-                    <p>{deck.question}</p>
-                    <img alt="" src={seta_virar} onClick={() => showAnswer(i)} />
-                </PerguntaAberta> : <PerguntaAberta key={deck.id}>
-                    <p>{deck.answer}</p>
+                (!openAnswers.includes(deck.id - 1) ? <PerguntaAberta data-identifier="flashcard" key={deck.id} >
+                    <p data-identifier="flashcard-question">{deck.question}</p>
+                    <img alt="" data-identifier="flashcard-turn-btn" src={seta_virar} onClick={() => showAnswer(i)} />
+                </PerguntaAberta> : <PerguntaAberta data-identifier="flashcard" key={deck.id}>
+                    <p data-identifier="flashcard-answer">{deck.answer}</p>
                 </PerguntaAberta>))}
 
         </>
