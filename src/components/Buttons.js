@@ -13,7 +13,7 @@ export default function Buttons(props) {
         const newOpen = openCards.filter((idInArray) => idInArray !== id)
         setOpenCards(newOpen)
     }
-
+    
     function increaseNot(){
         let newNotRemember = [...notRemember, openCards[openCards.length-1]]
         setNotRemember(newNotRemember)
