@@ -6,19 +6,30 @@ import Footer from './Footer';
 import Cards from './Cards';
 import deckreact from './deck/deckreact';
 import { useState } from "react"
+import seta_play from '../assets/img/seta_play.png'
+
 
 export default function App() {
     const [alreadyAnswered, setAlreadyAnswered] = useState([])
     const [openAnswers, setOpenAnswers] = useState([])
-    const [recall, setRecall] = useState([])
-    
+    const [remember, setRemember] = useState([])
+    const [almost, setAlmost] = useState([])
+    const [notRemember, setNotRemember] = useState([])
+    const [openCards, setOpenCards] = useState([])  
+    let newIcons = []
+
+    for (let i = 0; i < deckreact.length; i++) {
+        newIcons.push(seta_play)
+    }
+    const [icons, setIcons] = useState(newIcons)
+
     return (
         <>
         <GlobalStyle/>
         <ScreenContainer>
             <Title></Title>
-            <Cards deck={deckreact} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} recall={recall} setRecall={setRecall}></Cards>
-            <Footer deck={deckreact} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} recall={recall} setRecall={setRecall}></Footer>
+            <Cards deck={deckreact} icons={icons} newIcons={newIcons} setIcons={setIcons} openCards={openCards} setOpenCards={setOpenCards} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} remember={remember} setRemember={setRemember} almost={almost} setAlmost={setAlmost} notRemember={notRemember} setNotRemember={setNotRemember}></Cards>
+            <Footer deck={deckreact} icons={icons} newIcons={newIcons} setIcons={setIcons} openCards={openCards} setOpenCards={setOpenCards} openAnswers={openAnswers} setOpenAnswers={setOpenAnswers} alreadyAnswered={alreadyAnswered} setAlreadyAnswered={setAlreadyAnswered} remember={remember} setRemember={setRemember} almost={almost} setAlmost={setAlmost} notRemember={notRemember} setNotRemember={setNotRemember}></Footer>
         </ScreenContainer>
         </>
     )

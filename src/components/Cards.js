@@ -1,38 +1,47 @@
-import React from 'react';
 import styled from 'styled-components';
-import seta_play from '../assets/img/seta_play.png'
 import seta_virar from '../assets/img/seta_virar.png'
-import { useState } from "react"
+
 
 export default function Cards(props) {
-    const {deck, openAnswers, setOpenAnswers, alreadyAnswered, recall, setRecall} = props
-    console.log(deck)
+    const { deck, icons, newIcons, setIcons, openCards, setOpenCards, openAnswers, setOpenAnswers, alreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember } = props
+
+
+    function openCard(i) {
+        if (alreadyAnswered.length === (remember.length + almost.length + notRemember.length) && openCards.length ===0)  {
+            setOpenCards([...openCards, i])
+        }
+    }
+
+    function showAnswer(i) {
+        setOpenAnswers([...openAnswers, i])
+    }
+
     
-    const [openCards, setOpenCards] = useState([])
-    function openCard(i){
-        if (alreadyAnswered.length === openCards.length)
-        {setOpenCards([...openCards, i])
-        console.log([...openCards, i])
+    function defineColor(id) {
+        if (remember.includes(id)) {
+            return "#2FBE34"
+        } if (notRemember.includes(id)) {
+            return "#FF3030"
+        } if (almost.includes(id)) {
+            return "#FF922E"
+        } else {
+            return "#333333"
+        }
     }
-    }
-   
-    function showAnswer(i){
-        setOpenAnswers([...openAnswers,i])
-    }
-    return(
+    return (
         <>
-            {deck.map((deck,i) => (!openCards.includes(deck.id-1)) ? <PerguntaFechada key={deck.id} onClick={()=>openCard(i)}>
+            {deck.map((deck, i) => (!openCards.includes(deck.id - 1)) ? <PerguntaFechada key={deck.id} onClick={() => openCard(i)}  line={alreadyAnswered.includes(deck.id - 1) && "line-through"} color={() => defineColor(deck.id - 1)}>
                 <p>Pergunta {deck.id}</p>
-                <img alt="" src={seta_play}/>
+                <img alt=""  src={icons[i]} />
             </PerguntaFechada>
-            :
-            (!openAnswers.includes(deck.id-1) ? <PerguntaAberta key={deck.id} >
-                <p>{deck.question}</p>
-                <img alt="" src={seta_virar} onClick={()=>showAnswer(i)}/>
-            </PerguntaAberta> : <PerguntaAberta key={deck.id}>
-                <p>{deck.answer}</p>
-            </PerguntaAberta>))}
-                
+                :
+                (!openAnswers.includes(deck.id - 1) ? <PerguntaAberta key={deck.id} >
+                    <p>{deck.question}</p>
+                    <img alt="" src={seta_virar} onClick={() => showAnswer(i)} />
+                </PerguntaAberta> : <PerguntaAberta key={deck.id}>
+                    <p>{deck.answer}</p>
+                </PerguntaAberta>))}
+
         </>
     )
 }
@@ -49,17 +58,17 @@ const PerguntaFechada = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
-  & p {
+    & p{
     font-family: 'Recursive';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #333333;
-  }` 
+    color: ${(props) => props.color};
+    text-decoration-line: ${(props) => props.line};}
+    `
+
 const PerguntaAberta = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700;800;900;1000&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     width: 300px;
     margin: 12px;
     padding: 15px;
@@ -83,3 +92,10 @@ const PerguntaAberta = styled.div`
     bottom: 10px;
     right: 10px;
   }`
+
+/* Você vai precisar trocar a cor dos botões e alguns textos!
+VERDE = "#2FBE34"
+AMARELO = "#FF922E"
+VERMELHO = "#FF3030"
+CINZA = "#333333" 
+*/

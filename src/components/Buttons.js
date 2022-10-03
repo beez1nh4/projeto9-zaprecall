@@ -1,26 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
+import seta_play from '../assets/img/seta_play.png'
+import icone_certo from '../assets/img/icone_certo.png'
+import icone_erro from '../assets/img/icone_erro.png'
+import icone_quase from '../assets/img/icone_quase.png'
 
 export default function Buttons(props) {
-    const {deck,  openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, recall, setRecall} = props
+    const {deck,  icons, setIcons, newIcons, openCards, setOpenCards, openAnswers, setOpenAnswers, alreadyAnswered, setAlreadyAnswered, remember, setRemember, almost, setAlmost, notRemember, setNotRemember} = props
     const colors = ["#FF3030", "#FF922E", "#2FBE34"]
+    function deleteItem(id){
+        const newOpen = openCards.filter((idInArray) => idInArray !== id)
+        setOpenCards(newOpen)
+    }
+
     function increaseNot(){
-        let newRecall = [...recall, "notRemembered"]
-        setRecall(newRecall)
-        if (alreadyAnswered.length !== openAnswers.length)
-        {setAlreadyAnswered([...alreadyAnswered, 1])}
+        let newNotRemember = [...notRemember, openCards[openCards.length-1]]
+        setNotRemember(newNotRemember)
+        let newOne = [...icons]
+        newOne[openCards[openCards.length-1]] = icone_erro
+        setIcons(newOne)
+        if (alreadyAnswered.length !== openAnswers.length){
+            setAlreadyAnswered([...alreadyAnswered, openAnswers[openAnswers.length-1]])
+            deleteItem(openCards[openCards.length-1])
+        }
     }
     function increaseAlmost(){
-        let newRecall = [...recall, "almost"]
-        setRecall(newRecall)
-        if (alreadyAnswered.length !== openAnswers.length)
-        {setAlreadyAnswered([...alreadyAnswered, 1])}
+        let newAlmost = [...almost, openCards[openCards.length-1]]
+        setAlmost(newAlmost)
+        let newOne = [...icons]
+        newOne[openCards[openCards.length-1]] = icone_quase
+        setIcons(newOne)
+        if (alreadyAnswered.length !== openAnswers.length){
+            setAlreadyAnswered([...alreadyAnswered, openAnswers[openAnswers.length-1]])
+            deleteItem(openCards[openCards.length-1])
+        }
     }
     function increaseRemember(){
-        let newRecall = [...recall, "remember"]
-        setRecall(newRecall)
-        if (alreadyAnswered.length !== openAnswers.length)
-        {setAlreadyAnswered([...alreadyAnswered, 1])}
+        let newRemember = [...remember, openCards[openCards.length-1]]
+        setRemember(newRemember)
+        let newOne = [...icons]
+        newOne[openCards[openCards.length-1]] = icone_certo
+        setIcons(newOne)
+
+        if (alreadyAnswered.length !== openAnswers.length){
+            setAlreadyAnswered([...alreadyAnswered, openAnswers[openAnswers.length-1]])
+            deleteItem(openCards[openCards.length-1])
+        }
     }
     return (
         <>
