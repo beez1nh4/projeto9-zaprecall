@@ -15,6 +15,11 @@ export default function Buttons(props) {
     }
     
     function increaseNot(){
+        
+        if (openAnswers.length !== alreadyAnswered.length){
+            console.log('already', alreadyAnswered)
+        console.log('openanswers',openAnswers)
+        console.log('opencards',openCards)
         let newNotRemember = [...notRemember, openCards[openCards.length-1]]
         setNotRemember(newNotRemember)
         let newOne = [...icons]
@@ -24,8 +29,9 @@ export default function Buttons(props) {
             setAlreadyAnswered([...alreadyAnswered, openAnswers[openAnswers.length-1]])
             deleteItem(openCards[openCards.length-1])
         }
-    }
+    }}
     function increaseAlmost(){
+        if (openAnswers.length !== alreadyAnswered.length){
         let newAlmost = [...almost, openCards[openCards.length-1]]
         setAlmost(newAlmost)
         let newOne = [...icons]
@@ -35,8 +41,9 @@ export default function Buttons(props) {
             setAlreadyAnswered([...alreadyAnswered, openAnswers[openAnswers.length-1]])
             deleteItem(openCards[openCards.length-1])
         }
-    }
+    }}
     function increaseRemember(){
+        if (openAnswers.length !== alreadyAnswered.length){
         let newRemember = [...remember, openCards[openCards.length-1]]
         setRemember(newRemember)
         let newOne = [...icons]
@@ -47,7 +54,7 @@ export default function Buttons(props) {
             setAlreadyAnswered([...alreadyAnswered, openAnswers[openAnswers.length-1]])
             deleteItem(openCards[openCards.length-1])
         }
-    }
+    }}
     return (
         <>
             <ContainerBotoes>

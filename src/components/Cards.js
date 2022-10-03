@@ -7,13 +7,15 @@ export default function Cards(props) {
 
 
     function openCard(i) {
-        if (alreadyAnswered.length === (remember.length + almost.length + notRemember.length) && openCards.length ===0)  {
+        if (alreadyAnswered.length === (remember.length + almost.length + notRemember.length) && openCards.length ===0 && !alreadyAnswered.includes(i))  {
             setOpenCards([...openCards, i])
         }
     }
 
     function showAnswer(i) {
-        setOpenAnswers([...openAnswers, i])
+        if(openCards.length ===1 && !alreadyAnswered.includes(i)){
+            setOpenAnswers([...openAnswers, i])
+        }  
     }
 
     
